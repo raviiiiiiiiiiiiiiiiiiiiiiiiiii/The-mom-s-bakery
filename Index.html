@@ -1,0 +1,204 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>The Mom's Cake — Vegan & Custom Cakes</title>
+  <meta name="description" content="The Mom's Cake — handcrafted vegan cakes & custom designs. Order custom cakes via WhatsApp.">
+  <style>
+    :root{
+      --bg:#fff8f5;
+      --card:#ffffff;
+      --muted:#6b6b6b;
+      --accent:#f06b6b;
+      --accent-2:#ffb4a2;
+      --glass: rgba(255,255,255,0.6);
+      --radius:16px;
+      --shadow: 0 6px 20px rgba(14,14,14,0.08);
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:linear-gradient(180deg,var(--bg),#fff);
+      color:#111;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:18px 16px 80px; /* mobile-first spacing */
+      display:flex;
+      justify-content:center;
+    }
+    .wrap{width:100%;max-width:var(--maxw)}/* header */
+header{display:flex;align-items:center;gap:12px}
+.logo{font-weight:700;font-size:20px;letter-spacing:0.3px}
+.tag{color:var(--muted);font-size:13px}
+
+/* hero */
+.hero{margin-top:18px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.8));border-radius:18px;padding:16px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center}
+.hero-left{flex:1}
+.headline{font-size:20px;font-weight:800;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 12px}
+.cta-row{display:flex;gap:10px}
+.btn{background:var(--accent);color:white;padding:10px 14px;border-radius:12px;border:0;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(240,107,107,0.18)}
+.btn.ghost{background:transparent;color:var(--accent);border:1.5px solid rgba(240,107,107,0.12)}
+.hero-right{width:120px;height:120px;border-radius:12px;overflow:hidden;flex-shrink:0}
+.hero-right img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* sections */
+section{margin-top:18px}
+.card{background:var(--card);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
+h2{margin:0 0 10px;font-size:18px}
+p{margin:0;color:var(--muted);line-height:1.45}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.gallery img{width:100%;height:160px;object-fit:cover;border-radius:10px}
+
+/* custom order */
+.custom{display:flex;gap:12px;align-items:center}
+.custom .left{flex:1}
+.custom .right{width:120px;height:120px;border-radius:12px;overflow:hidden}
+.price-list{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.price-item{display:flex;justify-content:space-between;padding:8px;border-radius:10px;background:linear-gradient(180deg,var(--glass),rgba(255,255,255,0.8));font-weight:600}
+
+/* contact */
+.contact-row{display:flex;gap:12px;align-items:center}
+.contact .map{flex:1;border-radius:12px;overflow:hidden;height:160px}
+.contact .info{width:120px;text-align:center}
+
+/* floating whatsapp */
+.wh-float{position:fixed;right:16px;bottom:16px;z-index:999}
+.wh-float a{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,var(--accent),var(--accent-2));color:white;padding:12px 14px;border-radius:50px;font-weight:700;text-decoration:none;box-shadow:0 12px 30px rgba(240,107,107,0.18)}
+
+/* bigger screens */
+@media(min-width:720px){
+  body{padding:28px}
+  .hero{padding:22px}
+  .hero-right{width:160px;height:160px}
+  .gallery img{height:200px}
+  .wrap{padding:0 12px}
+}
+@media(min-width:980px){
+  .hero{gap:20px}
+  .hero{align-items:flex-start}
+  .hero-left{max-width:720px}
+  .gallery{grid-template-columns:repeat(3,1fr)}
+  .custom{gap:20px}
+}
+
+/* accessibility focus */
+a:focus, button:focus{outline:3px solid rgba(240,107,107,0.18);outline-offset:3px}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">The Mom's Cake</div>
+      <div class="tag">Vegan cakes • Custom designs • Made with care</div>
+    </header><main>
+  <section class="hero card">
+    <div class="hero-left">
+      <h1 class="headline">Handmade vegan cakes for every moment</h1>
+      <p class="sub">Small-batch bakery offering plant-based cakes, celebration orders, and custom-designed showpieces. Local pickup & delivery available.</p>
+      <div class="cta-row">
+        <!-- WhatsApp prefill link for general inquiry -->
+        <a class="btn" href="https://wa.me/917277428490?text=Hi%20The%20Mom%27s%20Cake%2C%20I%27d%20like%20to%20place%20an%20order%20.%20Can%20you%20help%3F" target="_blank" rel="noopener">Order now</a>
+        <button class="btn ghost" onclick="document.getElementById('custom-section').scrollIntoView({behavior:'smooth'})">Custom cakes</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="https://i.ibb.co/zWV4NtPr/Screenshot-20251124-195927-Maps.jpg" alt="Bakery front" loading="lazy">
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="about">
+    <h2 id="about">About The Mom's Cake</h2>
+    <p>We are a tiny home-style bakery focused on plant-based ingredients — no dairy, no eggs, just delicious vegan alternatives and tons of flavour. We specialize in custom designs for birthdays, anniversaries and events. Tell us your idea, we’ll make it edible art.</p>
+  </section>
+
+  <section class="card" aria-labelledby="gallery">
+    <h2 id="gallery">Gallery — recent bakes</h2>
+    <div class="gallery" role="list">
+      <img src="https://i.ibb.co/3P6J41G/Screenshot-20251124-195910-Maps.jpg" alt="Vegan cakes" loading="lazy">
+      <img src="https://i.ibb.co/W47HTMrt/Screenshot-20251124-195944-Maps.jpg" alt="Custom cake" loading="lazy">
+      <img src="https://i.ibb.co/3P6J41G/Screenshot-20251124-195910-Maps.jpg" alt="Vegan cake 2" loading="lazy">
+    </div>
+    <p style="margin-top:8px;color:var(--muted);font-size:13px">Photos provided by the shop. Want more images? Send us your request via WhatsApp and we’ll share a full portfolio.</p>
+  </section>
+
+  <section id="custom-section" class="card" aria-labelledby="custom">
+    <h2 id="custom">Custom Cakes — make it yours</h2>
+    <div class="custom">
+      <div class="left">
+        <p>Custom designs made to order. Choose size, flavour, filling, and theme. We recommend ordering at least 3 days in advance for complex showpieces.</p>
+
+        <div class="price-list" aria-hidden>
+          <div class="price-item"><span>Small (6" )</span><span>₹700+</span></div>
+          <div class="price-item"><span>Medium (8" )</span><span>₹1,200+</span></div>
+          <div class="price-item"><span>Large (10" )</span><span>₹2,000+</span></div>
+        </div>
+
+        <p style="margin-top:10px;color:var(--muted);font-size:13px">Prices start from and vary based on design complexity. Final quote via chat.</p>
+
+        <!-- WhatsApp prefilled message for custom cake orders -->
+        <div style="margin-top:12px;display:flex;gap:10px">
+          <a class="btn" href="https://wa.me/917277428490?text=I%20want%20a%20custom%20cake.%20Here%20are%20the%20details%3A%20%5Bsize%2C%20date%2C%20theme%2C%20delivery%5D" target="_blank" rel="noopener">Order a custom cake</a>
+          <a class="btn ghost" href="https://wa.me/917277428490?text=Can%20you%20share%20your%20menu%20and%20flavours%3F" target="_blank" rel="noopener">Ask about flavours</a>
+        </div>
+      </div>
+      <div class="right">
+        <img src="https://i.ibb.co/W47HTMrt/Screenshot-20251124-195944-Maps.jpg" alt="Custom cake example" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="menu">
+    <h2 id="menu">Menu highlights (vegan)</h2>
+    <p style="margin-bottom:8px">Quick list — DM to check daily availability.</p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">
+      <div class="price-item">Chocolate Fudge <span style="font-weight:500">₹220/slice</span></div>
+      <div class="price-item">Red Velvet <span style="font-weight:500">₹250/slice</span></div>
+      <div class="price-item">Vanilla Bean <span style="font-weight:500">₹200/slice</span></div>
+      <div class="price-item">Lemon & Poppy <span style="font-weight:500">₹230/slice</span></div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="contact">
+    <h2 id="contact">Contact & location</h2>
+    <div class="contact-row">
+      <div class="map">
+        <!-- simple map preview using the bakery image (replace with real embed later) -->
+        <img src="https://i.ibb.co/zWV4NtPr/Screenshot-20251124-195927-Maps.jpg" alt="Shop front / map preview" style="width:100%;height:100%;object-fit:cover;display:block">
+      </div>
+      <div class="info">
+        <div style="font-weight:800">WhatsApp</div>
+        <div style="color:var(--muted);font-size:13px;margin-top:6px">+91 72774 28490</div>
+        <div style="margin-top:10px">
+          <a class="btn" href="https://wa.me/917277428490?text=Hi%2C%20I%20want%20to%20know%20your%20timings%20and%20pickup%20details." target="_blank" rel="noopener">Message</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="margin-top:18px;text-align:center;color:var(--muted);font-size:13px">
+    <div>© The Mom's Cake • Vegan cakes & custom designs</div>
+    <div style="margin-top:6px">Made with care — update photos & menu anytime.</div>
+  </footer>
+</main>
+
+  </div>  <!-- floating whatsapp button -->  <div class="wh-float">
+    <a href="https://wa.me/917277428490?text=Hi%20The%20Mom%27s%20Cake%2C%20I%20saw%20your%20website%20and%20want%20to%20order" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">WhatsApp ▸</a>
+  </div>  <script>
+    // small JS helpers
+    // smooth scroll polyfill for older browsers: handled by CSS/HTML already
+
+    // ensure images keep aspect for very small screens
+    document.addEventListener('DOMContentLoaded', function(){
+      // nothing heavy — site is purposely minimal JS
+    });
+  </script></body>
+</html>

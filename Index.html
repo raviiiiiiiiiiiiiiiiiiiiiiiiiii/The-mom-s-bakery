@@ -1,198 +1,198 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>The Mom's Cake — Vegan & Custom Cakes</title>
-
+  <meta name="description" content="Handmade vegan cakes, custom designs. Order via WhatsApp." />
   <style>
     :root{
-      --bg:#fff8f5;
-      --card:#ffffff;
-      --muted:#6b6b6b;
-      --accent:#f06b6b;
-      --accent-2:#ffb4a2;
-      --shadow:0 6px 20px rgba(14,14,14,0.08);
+      --bg: #fff8f5;
+      --card: #ffffff;
+      --muted: #6b6b6b;
+      --accent: #f06b6b;
+      --accent-2: #ffb4a2;
+      --radius: 14px;
+      --gap: 14px;
+      --shadow: 0 8px 30px rgba(14,14,14,0.06);
+      --maxw: 980px;
     }
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family:Inter,system-ui;
-      background:linear-gradient(180deg,var(--bg),#fff);
-      padding:18px 16px 80px;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background: linear-gradient(180deg,var(--bg),#fff);
+      color:#111;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
       display:flex;
       justify-content:center;
+      padding:18px 14px 100px;
     }
-    .wrap{width:100%;max-width:1000px}
 
-    header{display:flex;align-items:center;gap:12px}
-    .logo{font-weight:700;font-size:20px}
-    .tag{color:var(--muted);font-size:13px}
+    /* wrapper */
+    .wrap{width:100%;max-width:var(--maxw)}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin-bottom:var(--gap);}
 
-    .btn{
-      background:var(--accent);
-      color:white;
-      padding:12px 16px;
+    /* header */
+    header{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px}
+    .brand{font-weight:800;font-size:18px;line-height:1}
+    .tag{color:var(--muted);font-size:12px;margin-top:4px}
+
+    /* hero */
+    .hero{padding:14px;border-radius:var(--radius);overflow:hidden}
+    .hero-title{font-size:20px;font-weight:800;margin:0 0 6px}
+    .hero-sub{color:var(--muted);font-size:14px;margin:0 0 12px;line-height:1.5}
+
+    .hero-media{
+      width:100%;
       border-radius:12px;
-      border:0;
-      width:100%;
-      font-weight:700;
-      text-align:center;
-      display:block;
-    }
-    .btn.ghost{background:transparent;color:var(--accent);border:1.5px solid rgba(240,107,107,0.22)}
-    .cta-row{display:flex;flex-direction:column;gap:10px}
-    @media(min-width:520px){.cta-row{flex-direction:row}.btn{width:auto}}
-
-    /* HERO — VERTICAL IMAGE FIX */
-    .hero{
-      margin-top:18px;
-      background:white;
-      border-radius:18px;
-      padding:16px;
-      box-shadow:var(--shadow);
-    }
-    .hero-img{
-      width:100%;
-      border-radius:14px;
-      object-fit:contain;   /* NO ZOOM */
       background:#fff;
+      overflow:hidden;
+      display:block;
+      aspect-ratio: 3 / 4; /* mobile-first vertical-friendly */
+      margin-bottom:12px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.03);
+    }
+    .hero-media img{
+      width:100%;height:100%;object-fit:contain;display:block;background:#fff;
     }
 
-    section{margin-top:18px}
-    .card{
-      background:white;
-      border-radius:14px;
-      padding:14px;
-      box-shadow:var(--shadow);
-    }
-    h2{margin:0 0 10px}
-    p{margin:0;color:var(--muted)}
-
-    /* GALLERY — ONLY 1 IMAGE */
-    .gallery img{
+    .cta-group{display:flex;flex-direction:column;gap:10px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      background:var(--accent);color:#fff;border:0;padding:12px;border-radius:10px;font-weight:700;text-decoration:none;
+      box-shadow:0 8px 18px rgba(240,107,107,0.12);
       width:100%;
-      border-radius:12px;
-      object-fit:contain;
-      background:white;
+    }
+    .btn.ghost{background:transparent;color:var(--accent);border:1.5px solid rgba(240,107,107,0.15);box-shadow:none}
+
+    /* gallery */
+    .gallery-title{font-weight:700;margin:0 0 10px}
+    .gallery-img{
+      width:100%;border-radius:12px;display:block;background:#fff;object-fit:cover;
+      aspect-ratio: 4 / 3;
     }
 
-    /* CUSTOM SECTION — IMAGE CLEAN */
-    .custom{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-    .custom img{
-      width:100%;
-      border-radius:12px;
-      object-fit:contain;
-      background:white;
-    }
+    /* custom */
+    .custom{display:flex;flex-direction:column;gap:12px}
+    .price-list{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+    .price-row{display:flex;justify-content:space-between;padding:10px;border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,0.6),#fff);font-weight:700}
 
-    /* ABOUT — moved to bottom */
-    
-    /* CONTACT — vertical image fix */
-    .contact-img{
-      width:100%;
-      border-radius:12px;
-      object-fit:contain;
-      background:white;
-    }
+    .custom-media{width:100%;border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:#fff}
+    .custom-media img{width:100%;height:100%;object-fit:contain;display:block}
 
-    /* floating WA button */
-    .wh-float{
-      position:fixed;right:16px;bottom:16px;z-index:99;
-    }
-    .wh-float a{
-      display:inline-flex;align-items:center;gap:6px;
-      background:linear-gradient(180deg,var(--accent),var(--accent-2));
-      padding:12px 14px;border-radius:50px;color:white;font-weight:700;
+    /* about */
+    .about-text{color:var(--muted);font-size:14px;line-height:1.5}
+
+    /* contact */
+    .contact-grid{display:flex;flex-direction:column;gap:12px}
+    .contact-media{width:100%;border-radius:12px;overflow:hidden;background:#fff;aspect-ratio:3/4}
+    .contact-media img{width:100%;height:100%;object-fit:contain;display:block}
+    .contact-cta{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+
+    /* footer small */
+    footer{font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
+
+    /* floating WA */
+    .wh-float{position:fixed;right:14px;bottom:14px;z-index:99}
+    .wh-float a{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:linear-gradient(180deg,var(--accent),var(--accent-2));color:#fff;font-weight:800;text-decoration:none;box-shadow:0 10px 24px rgba(240,107,107,0.18)}
+
+    /* responsive tweaks */
+    @media(min-width:600px){
+      body{padding:32px}
+      .hero-title{font-size:24px}
+      .wrap{max-width:900px}
+      .hero-media{aspect-ratio:16/9}
+      .contact-media{aspect-ratio:16/9}
+      .custom-media{aspect-ratio:4/3}
     }
   </style>
 </head>
-
 <body>
-<div class="wrap">
+  <div class="wrap">
 
-<header>
-  <div class="logo">The Mom's Cake</div>
-  <div class="tag">Vegan cakes • Custom designs • Made with care</div>
-</header>
+    <header style="margin-bottom:6px">
+      <div>
+        <div class="brand">The Mom's Cake</div>
+        <div class="tag">Vegan cakes • Custom designs • Made with care</div>
+      </div>
+    </header>
 
+    <!-- HERO -->
+    <section class="card hero">
+      <h1 class="hero-title">Handmade vegan cakes for every moment</h1>
+      <p class="hero-sub">Small-batch bakery offering plant-based cakes, celebration orders, and custom-designed showpieces. Local pickup & delivery available.</p>
 
-<!-- HERO (vertical image clean) -->
-<section class="hero card">
-  <h1 style="margin:0 0 10px;font-weight:800;font-size:22px">Handmade vegan cakes for every moment</h1>
-  <p style="margin-bottom:12px">Small-batch bakery offering plant-based cakes, celebration orders, and custom-designed showpieces.</p>
+      <div class="hero-media" aria-hidden="true">
+        <img src="https://i.ibb.co/zWV4NtPr/Screenshot-20251124-195927-Maps.jpg" alt="Shop front">
+      </div>
 
-  <div class="cta-row">
-    <a class="btn" href="https://wa.me/917277428490" target="_blank">Order now</a>
-    <button class="btn ghost" onclick="document.getElementById('custom-section').scrollIntoView({behavior:'smooth'})">Custom cakes</button>
+      <div class="cta-group" style="margin-top:6px">
+        <a class="btn" href="https://wa.me/917277428490?text=Hi%20The%20Mom%27s%20Cake%2C%20I%27d%20like%20to%20place%20an%20order" target="_blank">Order now</a>
+        <a class="btn ghost" href="#custom-section">Custom cakes</a>
+      </div>
+    </section>
+
+    <!-- GALLERY - single image -->
+    <section class="card">
+      <h2 class="gallery-title">Gallery — recent bakes</h2>
+      <img class="gallery-img" src="https://i.ibb.co/1f5dMCch/Screenshot-20251124-195910-Maps.jpg" alt="Gallery cake">
+    </section>
+
+    <!-- CUSTOM -->
+    <section id="custom-section" class="card">
+      <h2 style="margin:0 0 6px;font-weight:800">Custom Cakes — make it yours</h2>
+      <p style="margin:0 0 8px;color:var(--muted);font-size:14px">Choose size, flavour, filling, and theme. Order 3 days in advance for complex designs.</p>
+
+      <div class="price-list" aria-hidden>
+        <div class="price-row"><span>Small (6")</span><span>₹700+</span></div>
+        <div class="price-row"><span>Medium (8")</span><span>₹1,200+</span></div>
+        <div class="price-row"><span>Large (10")</span><span>₹2,000+</span></div>
+      </div>
+
+      <div style="margin-top:12px;display:flex;flex-direction:column;gap:10px">
+        <a class="btn" href="https://wa.me/917277428490?text=I%20want%20a%20custom%20cake" target="_blank">Order a custom cake</a>
+        <a class="btn ghost" href="https://wa.me/917277428490?text=Can%20you%20share%20your%20menu%20and%20flavours%3F" target="_blank">Ask about flavours</a>
+      </div>
+
+      <div style="margin-top:12px" class="custom-media">
+        <img src="https://i.ibb.co/RTGF49Bz/Screenshot-20251124-195944-Maps.jpg" alt="Custom cake sample">
+      </div>
+    </section>
+
+    <!-- ABOUT (kept above contact as requested earlier) -->
+    <section class="card">
+      <h2 style="margin:0 0 8px;font-weight:800">About The Mom's Cake</h2>
+      <p class="about-text">We are a tiny home-style bakery focused on plant-based ingredients — no dairy, no eggs, just delicious vegan alternatives and custom cake designs. Tell us your idea, we’ll make it edible art.</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="card">
+      <h2 style="margin:0 0 8px;font-weight:800">Contact & location</h2>
+
+      <div class="contact-media" aria-hidden="true">
+        <img src="https://i.ibb.co/zWV4NtPr/Screenshot-20251124-195927-Maps.jpg" alt="Shop front">
+      </div>
+
+      <div class="contact-cta" style="margin-top:10px">
+        <div style="text-align:center">
+          <div style="font-weight:800">WhatsApp</div>
+          <div style="color:var(--muted);font-size:13px;margin-top:6px">+91 72774 28490</div>
+        </div>
+        <a class="btn" href="https://wa.me/917277428490?text=Hi%20I%20want%20to%20order" target="_blank">Message</a>
+      </div>
+    </section>
+
+    <footer>
+      © The Mom's Cake • Vegan cakes & custom designs
+    </footer>
+
   </div>
 
-  <img class="hero-img" src="https://i.ibb.co/zWV4NtPr/Screenshot-20251124-195927-Maps.jpg">
-</section>
-
-
-<!-- GALLERY — ONLY ONE IMAGE -->
-<section class="card">
-  <h2>Gallery — recent bakes</h2>
-  <img src="https://i.ibb.co/1f5dMCch/Screenshot-20251124-195910-Maps.jpg" class="gallery-img">
-</section>
-
-
-<!-- CUSTOM CAKES -->
-<section id="custom-section" class="card">
-  <h2>Custom Cakes — make it yours</h2>
-
-  <p>Choose size, flavour, filling, and theme. Order 3 days in advance for complex designs.</p>
-
-  <div style="margin-top:12px">
-    <div class="price-item" style="display:flex;justify-content:space-between;margin-bottom:8px"><span>Small (6")</span><span>₹700+</span></div>
-    <div class="price-item" style="display:flex;justify-content:space-between;margin-bottom:8px"><span>Medium (8")</span><span>₹1,200+</span></div>
-    <div class="price-item" style="display:flex;justify-content:space-between;margin-bottom:12px"><span>Large (10")</span><span>₹2,000+</span></div>
+  <div class="wh-float">
+    <a href="https://wa.me/917277428490" target="_blank" aria-label="WhatsApp">WhatsApp ▸</a>
   </div>
-
-  <div class="cta-row">
-    <a class="btn" href="https://wa.me/917277428490" target="_blank">Order a custom cake</a>
-    <a class="btn ghost" href="https://wa.me/917277428490" target="_blank">Ask about flavours</a>
-  </div>
-
-  <img src="https://i.ibb.co/RTGF49Bz/Screenshot-20251124-195944-Maps.jpg">
-</section>
-
-
-<!-- ABOUT — moved down here -->
-<section class="card">
-  <h2>About The Mom's Cake</h2>
-  <p>We are a tiny home-style bakery focused on plant-based ingredients — no dairy, no eggs, just delicious vegan alternatives and custom cake designs.</p>
-</section>
-
-
-<!-- CONTACT — vertical image fix -->
-<section class="card">
-  <h2>Contact & location</h2>
-
-  <img class="contact-img" src="https://i.ibb.co/zWV4NtPr/Screenshot-20251124-195927-Maps.jpg">
-
-  <div style="text-align:center;margin-top:12px">
-    <div style="font-weight:800">WhatsApp</div>
-    <div style="color:var(--muted);font-size:13px;margin-top:6px">+91 72774 28490</div>
-    <a class="btn" style="margin-top:10px" href="https://wa.me/917277428490" target="_blank">Message</a>
-  </div>
-</section>
-
-
-<footer style="margin-top:18px;text-align:center;color:var(--muted);font-size:13px">
-  © The Mom's Cake • Vegan cakes & custom designs
-</footer>
-
-</div>
-
-<div class="wh-float">
-  <a href="https://wa.me/917277428490" target="_blank">WhatsApp ▸</a>
-</div>
-
 </body>
 </html>

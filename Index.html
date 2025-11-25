@@ -34,7 +34,7 @@
     .logo{font-weight:700;font-size:20px}
     .tag{color:var(--muted);font-size:13px}
 
-    /* buttons fix */
+    /* buttons */
     .btn{
       background:var(--accent);
       color:white;
@@ -42,7 +42,7 @@
       border-radius:12px;
       border:0;
       font-weight:700;
-      width:100%;              /* stops shrinking */
+      width:100%;
       text-align:center;
       display:block;
       box-shadow:0 6px 18px rgba(240,107,107,0.18);
@@ -52,8 +52,11 @@
       color:var(--accent);
       border:1.5px solid rgba(240,107,107,0.22);
     }
-
-    .cta-row{display:flex;flex-direction:column;gap:10px}
+    .cta-row{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
     @media(min-width:520px){
       .cta-row{flex-direction:row}
       .btn{width:auto}
@@ -71,20 +74,29 @@
       gap:12px;
       align-items:center;
     }
+
+    /* ⭐ FIXED HERO IMAGE */
     .hero-right{
       width:100%;
-      height:180px;
+      aspect-ratio:4/3;
       border-radius:14px;
       overflow:hidden;
     }
-    .hero-right img{width:100%;height:100%;object-fit:cover}
+    .hero-right img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
 
     @media(min-width:520px){
       .hero{flex-wrap:nowrap}
-      .hero-right{width:160px;height:160px}
+      .hero-right{
+        width:160px;
+        aspect-ratio:1/1;
+      }
     }
 
-    /* section styling */
+    /* sections */
     section{margin-top:18px}
     .card{
       background:var(--card);
@@ -95,37 +107,61 @@
     h2{margin:0 0 10px;font-size:18px}
     p{margin:0;color:var(--muted);line-height:1.45}
 
-    /* gallery */
+    /* ⭐ GALLERY FIX (Always clean, no stretch) */
     .gallery{
       display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:8px;
+      grid-template-columns:1fr;
+      gap:10px;
     }
     .gallery img{
       width:100%;
-      height:130px;
+      aspect-ratio:4/3;
+      border-radius:12px;
       object-fit:cover;
-      border-radius:10px;
-    }
-    @media(min-width:480px){
-      .gallery img{height:160px}
+      display:block;
     }
 
-    /* custom */
-    .custom{display:flex;flex-wrap:wrap;gap:12px}
+    @media(min-width:600px){
+      .gallery{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    /* custom section */
+    .custom{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    /* ⭐ CUSTOM CAKE IMAGE FIX */
     .custom .right{
       width:100%;
-      height:180px;
       border-radius:12px;
       overflow:hidden;
     }
-    @media(min-width:520px){
-      .custom{flex-wrap:nowrap}
-      .custom .right{width:160px;height:160px}
+    .custom .right img{
+      width:100%;
+      height:auto;
+      object-fit:cover;
+      border-radius:12px;
+      display:block;
     }
 
-    /* price items */
-    .price-list{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+    @media(min-width:520px){
+      .custom{flex-wrap:nowrap}
+      .custom .right{
+        width:160px;
+      }
+    }
+
+    /* price list */
+    .price-list{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-top:10px;
+    }
     .price-item{
       display:flex;
       justify-content:space-between;
@@ -135,28 +171,30 @@
       font-weight:600;
     }
 
-    /* contact */
+    /* contact section */
     .contact-row{
       display:flex;
       flex-wrap:wrap;
       gap:12px;
     }
-    .contact .map, .contact .info{
+    .map,.info{
       width:100%;
     }
-    .contact .map img{
+
+    /* ⭐ CONTACT IMAGE FIX */
+    .map img{
       width:100%;
-      height:180px;
-      border-radius:12px;
+      aspect-ratio:4/3;
       object-fit:cover;
+      border-radius:12px;
     }
-    .contact .info{text-align:center}
+
+    .info{text-align:center}
 
     @media(min-width:520px){
       .contact-row{flex-wrap:nowrap}
-      .contact .map{flex:1}
-      .contact .info{width:160px}
-      .contact .map img{height:160px}
+      .map{flex:1}
+      .info{width:160px}
     }
 
     /* floating whatsapp */

@@ -4,184 +4,334 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>The Mom's Cake — Vegan & Custom Cakes</title>
-  <meta name="description" content="Handmade vegan cakes, custom designs. Order via WhatsApp." />
+  <meta name="description" content="Handmade vegan cakes & custom designs. Order via WhatsApp." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
+      /* Light Cream Bakery Theme */
       --bg: #fff8f5;
       --card: #ffffff;
       --muted: #6b6b6b;
+      --text: #111;
       --accent: #f06b6b;
       --accent-2: #ffb4a2;
+      --glass: rgba(255,255,255,0.6);
       --radius: 14px;
-      --gap: 14px;
-      --shadow: 0 8px 30px rgba(14,14,14,0.06);
+      --shadow: 0 10px 30px rgba(14,14,14,0.06);
       --maxw: 980px;
+      --wa-green: #22c55e;
+      --wa-dark: #06240f;
     }
-    *{box-sizing:border-box}
+
+    *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
       background: linear-gradient(180deg,var(--bg),#fff);
-      color:#111;
+      color:var(--text);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       display:flex;
       justify-content:center;
-      padding:18px 14px 100px;
+      padding:18px 14px 120px;
     }
 
-    /* wrapper */
     .wrap{width:100%;max-width:var(--maxw)}
-    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin-bottom:var(--gap);}
+    a{color:inherit;text-decoration:none}
 
-    /* header */
-    header{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px}
-    .brand{font-weight:800;font-size:18px;line-height:1}
-    .tag{color:var(--muted);font-size:12px;margin-top:4px}
+    /* ---------- Sticky Header (glassmorphic) ---------- */
+    header{
+      position:sticky;top:0;z-index:60;
+      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.7);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      margin-bottom:12px;
+    }
+    nav.container{width:min(1120px,94%);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    .brand{font-weight:800;font-size:1.05rem}
+    .tagline{font-size:12px;color:var(--muted);margin-top:2px}
+
+    /* desktop nav */
+    .navlinks{display:flex;gap:10px;align-items:center}
+    .navlinks .btn{padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(0,0,0,0.06);font-weight:700}
+    .navlinks .btn.brand{background:linear-gradient(135deg,var(--accent),var(--accent-2));border:none;color:white}
+
+    /* hamburger (phone) */
+    .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer}
+    .hamburger span{width:24px;height:3px;background:var(--text);border-radius:3px;transition:.25s}
+    .hamburger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+    /* mobile menu */
+    #mobileNav{
+      display:none;
+      position:absolute;
+      right:14px;
+      top:100%;
+      background:var(--card);
+      padding:12px;
+      border-radius:12px;
+      box-shadow:var(--shadow);
+      min-width:180px;
+      z-index:120;
+      flex-direction:column;
+      gap:10px;
+    }
+    #mobileNav.active{display:flex}
+    #mobileNav a{display:block;padding:8px 10px;border-radius:8px;color:var(--text);text-decoration:none}
+
+    @media(min-width:641px){
+      .hamburger{display:none}
+      #mobileNav{display:none !important}
+    }
+
+    /* ---------- Page layout (mobile-first) ---------- */
+    .card{background:var(--card);border-radius:var(--radius);padding:14px;margin-bottom:14px;box-shadow:var(--shadow)}
+    h1{font-size:20px;margin-bottom:8px}
+    h2{font-size:18px;margin-bottom:8px}
+    p{color:var(--muted);line-height:1.5;margin:0}
 
     /* hero */
-    .hero{padding:14px;border-radius:var(--radius);overflow:hidden}
-    .hero-title{font-size:20px;font-weight:800;margin:0 0 6px}
-    .hero-sub{color:var(--muted);font-size:14px;margin:0 0 12px;line-height:1.5}
-
     .hero-media{
       width:100%;
       border-radius:12px;
-      background:#fff;
       overflow:hidden;
+      background:#fff;
+      aspect-ratio:3/4; /* vertical-friendly on phones */
       display:block;
-      aspect-ratio: 3 / 4; /* mobile-first vertical-friendly */
-      margin-bottom:12px;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.03);
+      margin:10px 0;
     }
-    .hero-media img{
-      width:100%;height:100%;object-fit:contain;display:block;background:#fff;
-    }
+    .hero-media img{width:100%;height:100%;object-fit:contain;display:block;background:#fff}
 
-    .cta-group{display:flex;flex-direction:column;gap:10px}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      background:var(--accent);color:#fff;border:0;padding:12px;border-radius:10px;font-weight:700;text-decoration:none;
-      box-shadow:0 8px 18px rgba(240,107,107,0.12);
-      width:100%;
-    }
-    .btn.ghost{background:transparent;color:var(--accent);border:1.5px solid rgba(240,107,107,0.15);box-shadow:none}
+    .cta-stack{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+    .btn-primary{background:var(--accent);color:#fff;padding:12px;border-radius:10px;text-align:center;font-weight:800;display:block}
+    .btn-outline{background:transparent;border:1.5px solid rgba(240,107,107,0.15);padding:10px;border-radius:10px;text-align:center;color:var(--accent);font-weight:700}
 
-    /* gallery */
-    .gallery-title{font-weight:700;margin:0 0 10px}
-    .gallery-img{
-      width:100%;border-radius:12px;display:block;background:#fff;object-fit:cover;
-      aspect-ratio: 4 / 3;
-    }
+    /* gallery single */
+    .gallery-img{width:100%;border-radius:12px;display:block;aspect-ratio:4/3;object-fit:cover;margin-top:8px}
 
     /* custom */
-    .custom{display:flex;flex-direction:column;gap:12px}
-    .price-list{display:flex;flex-direction:column;gap:8px;margin-top:6px}
-    .price-row{display:flex;justify-content:space-between;padding:10px;border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,0.6),#fff);font-weight:700}
+    .price-row{display:flex;justify-content:space-between;padding:10px;border-radius:10px;background:linear-gradient(180deg,var(--glass),#fff);font-weight:700;margin-top:8px}
 
-    .custom-media{width:100%;border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:#fff}
-    .custom-media img{width:100%;height:100%;object-fit:contain;display:block}
+    .custom-media{width:100%;border-radius:12px;overflow:hidden;aspect-ratio:4/3;margin-top:12px}
+    .custom-media img{width:100%;height:100%;object-fit:contain;display:block;background:#fff}
 
-    /* about */
-    .about-text{color:var(--muted);font-size:14px;line-height:1.5}
+    /* additional sections */
+    .two-col{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:900px){.two-col{grid-template-columns:1fr 1fr}}
+
+    .feature{background:linear-gradient(180deg,#fff,#fff);padding:12px;border-radius:10px}
+    .chip{display:inline-block;background:#fff;padding:6px 10px;border-radius:999px;border:1px solid rgba(0,0,0,0.04);font-weight:700;margin-right:8px;margin-top:8px}
+
+    /* reviews */
+    .reviews{display:flex;flex-direction:column;gap:10px}
+    .review{padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fff);box-shadow:0 6px 18px rgba(0,0,0,0.03)}
+
+    /* faq */
+    .faq-item{margin-bottom:10px}
+    .faq-q{font-weight:800;margin-bottom:6px}
+    .faq-a{color:var(--muted)}
 
     /* contact */
-    .contact-grid{display:flex;flex-direction:column;gap:12px}
-    .contact-media{width:100%;border-radius:12px;overflow:hidden;background:#fff;aspect-ratio:3/4}
-    .contact-media img{width:100%;height:100%;object-fit:contain;display:block}
-    .contact-cta{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+    .contact-media{width:100%;border-radius:12px;overflow:hidden;aspect-ratio:3/4;margin-top:10px}
+    .contact-media img{width:100%;height:100%;object-fit:contain;display:block;background:#fff}
 
-    /* footer small */
-    footer{font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
+    /* footer */
+    footer{font-size:13px;color:var(--muted);text-align:center;padding:18px 0;margin-top:6px}
 
-    /* floating WA */
-    .wh-float{position:fixed;right:14px;bottom:14px;z-index:99}
-    .wh-float a{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:linear-gradient(180deg,var(--accent),var(--accent-2));color:#fff;font-weight:800;text-decoration:none;box-shadow:0 10px 24px rgba(240,107,107,0.18)}
+    /* floating WA - like reference */
+    .wa-fab{position:fixed;right:16px;bottom:16px;z-index:80;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--wa-green);color:var(--wa-dark);box-shadow:0 10px 25px rgba(34,197,94,0.35)}
+    .wa-fab svg{width:28px;height:28px}
 
-    /* responsive tweaks */
+    /* larger screen tweaks */
     @media(min-width:600px){
-      body{padding:32px}
-      .hero-title{font-size:24px}
-      .wrap{max-width:900px}
+      body{padding:28px}
+      h1{font-size:26px}
       .hero-media{aspect-ratio:16/9}
       .contact-media{aspect-ratio:16/9}
-      .custom-media{aspect-ratio:4/3}
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
 
-    <header style="margin-bottom:6px">
-      <div>
+  <header>
+    <nav class="container" style="position:relative;">
+      <div style="display:flex;gap:10px;align-items:center">
         <div class="brand">The Mom's Cake</div>
-        <div class="tag">Vegan cakes • Custom designs • Made with care</div>
+        <div class="tagline" style="font-size:12px;color:var(--muted)">Vegan cakes • Custom designs • Made with care</div>
       </div>
-    </header>
+
+      <!-- desktop nav -->
+      <div class="navlinks" id="desktopNav">
+        <a class="btn" href="#gallery">Gallery</a>
+        <a class="btn" href="#custom-section">Custom</a>
+        <a class="btn" href="#best-sellers">Best sellers</a>
+        <a class="btn brand" href="https://wa.me/917277428490?text=Hi%20The%20Mom%27s%20Cake">WhatsApp</a>
+      </div>
+
+      <!-- hamburger (phone) -->
+      <div class="hamburger" id="hamburger" aria-label="Open menu" role="button">
+        <span></span><span></span><span></span>
+      </div>
+
+      <!-- mobile dropdown -->
+      <div id="mobileNav" aria-hidden="true">
+        <a href="#gallery">Gallery</a>
+        <a href="#custom-section">Custom cakes</a>
+        <a href="#best-sellers">Best sellers</a>
+        <a href="https://wa.me/917277428490?text=Hi%20The%20Mom%27s%20Cake" style="background:var(--wa-green);color:var(--wa-dark);padding:8px;border-radius:8px;font-weight:700;text-align:center">WhatsApp</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
 
     <!-- HERO -->
-    <section class="card hero">
-      <h1 class="hero-title">Handmade vegan cakes for every moment</h1>
-      <p class="hero-sub">Small-batch bakery offering plant-based cakes, celebration orders, and custom-designed showpieces. Local pickup & delivery available.</p>
+    <section class="card">
+      <h1>Handmade vegan cakes for every moment</h1>
+      <p style="margin-top:8px">Small-batch bakery offering plant-based cakes, celebration orders, and custom-designed showpieces. Local pickup & delivery available.</p>
 
       <div class="hero-media" aria-hidden="true">
-        <img src="https://i.ibb.co/zWV4NtPr/Screenshot-20251124-195927-Maps.jpg" alt="Shop front">
+        <img src="https://i.ibb.co/zWV4NtPr/Screenshot-20251124-195927-Maps.jpg" alt="Bakery front">
       </div>
 
-      <div class="cta-group" style="margin-top:6px">
-        <a class="btn" href="https://wa.me/917277428490?text=Hi%20The%20Mom%27s%20Cake%2C%20I%27d%20like%20to%20place%20an%20order" target="_blank">Order now</a>
-        <a class="btn ghost" href="#custom-section">Custom cakes</a>
+      <div class="cta-stack">
+        <a class="btn-primary" href="https://wa.me/917277428490?text=Hi%20I%20want%20to%20order" target="_blank">Order now</a>
+        <a class="btn-outline" href="#custom-section">Custom cakes</a>
       </div>
     </section>
 
-    <!-- GALLERY - single image -->
-    <section class="card">
-      <h2 class="gallery-title">Gallery — recent bakes</h2>
+    <!-- GALLERY -->
+    <section id="gallery" class="card">
+      <h2>Gallery — recent bakes</h2>
       <img class="gallery-img" src="https://i.ibb.co/1f5dMCch/Screenshot-20251124-195910-Maps.jpg" alt="Gallery cake">
+      <p style="margin-top:8px;color:var(--muted)">A small selection of our daily display. DM for the full portfolio or to request a themed gallery.</p>
     </section>
 
     <!-- CUSTOM -->
     <section id="custom-section" class="card">
-      <h2 style="margin:0 0 6px;font-weight:800">Custom Cakes — make it yours</h2>
-      <p style="margin:0 0 8px;color:var(--muted);font-size:14px">Choose size, flavour, filling, and theme. Order 3 days in advance for complex designs.</p>
+      <h2>Custom Cakes — make it yours</h2>
+      <p style="margin-top:6px;color:var(--muted)">Choose size, flavour, filling, and theme. Order at least 3 days in advance for elaborate showpieces.</p>
 
-      <div class="price-list" aria-hidden>
+      <div style="margin-top:10px">
         <div class="price-row"><span>Small (6")</span><span>₹700+</span></div>
         <div class="price-row"><span>Medium (8")</span><span>₹1,200+</span></div>
         <div class="price-row"><span>Large (10")</span><span>₹2,000+</span></div>
       </div>
 
       <div style="margin-top:12px;display:flex;flex-direction:column;gap:10px">
-        <a class="btn" href="https://wa.me/917277428490?text=I%20want%20a%20custom%20cake" target="_blank">Order a custom cake</a>
-        <a class="btn ghost" href="https://wa.me/917277428490?text=Can%20you%20share%20your%20menu%20and%20flavours%3F" target="_blank">Ask about flavours</a>
+        <a class="btn-primary" href="https://wa.me/917277428490?text=I%20want%20a%20custom%20cake" target="_blank">Order a custom cake</a>
+        <a class="btn-outline" href="https://wa.me/917277428490?text=Can%20you%20share%20your%20menu%20and%20flavours%3F">Ask about flavours</a>
       </div>
 
-      <div style="margin-top:12px" class="custom-media">
-        <img src="https://i.ibb.co/RTGF49Bz/Screenshot-20251124-195944-Maps.jpg" alt="Custom cake sample">
+      <div class="custom-media" aria-hidden="true">
+        <img src="https://i.ibb.co/RTGF49Bz/Screenshot-20251124-195944-Maps.jpg" alt="Custom cake example">
       </div>
     </section>
 
-    <!-- ABOUT (kept above contact as requested earlier) -->
+    <!-- BEST SELLERS -->
+    <section id="best-sellers" class="card">
+      <h2>Best sellers</h2>
+      <div class="two-col" style="margin-top:8px">
+        <div class="feature">
+          <div style="font-weight:800;margin-bottom:6px">Chocolate Fudge Cake</div>
+          <p class="muted">Rich cocoa sponge, vegan fudge ganache, and a velvety finish — our most requested celebration cake.</p>
+          <div style="margin-top:8px"><span class="chip">Egg-free</span><span class="chip">Soy option</span></div>
+        </div>
+        <div class="feature">
+          <div style="font-weight:800;margin-bottom:6px">Vanilla Bean Celebration</div>
+          <p class="muted">Classic vanilla infused with Madagascar beans, layered with light vegan buttercream and seasonal toppings.</p>
+          <div style="margin-top:8px"><span class="chip">Light</span><span class="chip">Custom toppers</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
     <section class="card">
-      <h2 style="margin:0 0 8px;font-weight:800">About The Mom's Cake</h2>
-      <p class="about-text">We are a tiny home-style bakery focused on plant-based ingredients — no dairy, no eggs, just delicious vegan alternatives and custom cake designs. Tell us your idea, we’ll make it edible art.</p>
+      <h2>Why choose us</h2>
+      <div style="margin-top:8px" class="two-col">
+        <div class="feature">
+          <div style="font-weight:800">Locally baked daily</div>
+          <p class="muted">Everything is baked fresh every morning in small batches — no long storage, no preservatives.</p>
+        </div>
+        <div class="feature">
+          <div style="font-weight:800">Custom art & flavours</div>
+          <p class="muted">From character cakes to elegant showpieces — we craft flavour profiles and designs to match your idea.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INGREDIENTS & PROCESS -->
+    <section class="card">
+      <h2>Ingredients & how we bake</h2>
+      <p style="margin-top:8px;color:var(--muted)">We use plant-based alternatives without compromising taste. Our staples: almond milk, aquafaba, coconut cream, and responsibly sourced cocoa. Every cake passes a 5-point quality check before it's boxed for delivery.</p>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="card">
+      <h2>Customer reviews</h2>
+      <div class="reviews" style="margin-top:8px">
+        <div class="review">
+          <div style="font-weight:800">"Best vegan cake I've had!"</div>
+          <div style="color:var(--muted);margin-top:6px">Ordered a birthday cake, came exactly as shown. Flavour was amazing.</div>
+        </div>
+        <div class="review">
+          <div style="font-weight:800">"Quick delivery and beautiful design"</div>
+          <div style="color:var(--muted);margin-top:6px">They nailed the theme and shipped it carefully. Highly recommended.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="card">
+      <h2>FAQ</h2>
+      <div style="margin-top:8px">
+        <div class="faq-item">
+          <div class="faq-q">How long in advance should I order?</div>
+          <div class="faq-a">We recommend 3 days for standard cakes and 5–7 days for complex showpieces.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do you deliver?</div>
+          <div class="faq-a">Yes — local delivery is available. Message us on WhatsApp for delivery fees and slots.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Are your cakes nut-free?</div>
+          <div class="faq-a">We use almond and nut-based ingredients for some items — contact us for nut-free options and we’ll advise alternatives.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO ORDER -->
+    <section class="card">
+      <h2>How to order</h2>
+      <ol style="margin-top:8px;color:var(--muted);line-height:1.6">
+        <li>Pick a cake or describe your custom idea.</li>
+        <li>Send size, date, and any reference images via WhatsApp.</li>
+        <li>We confirm design, price, and delivery/pickup details.</li>
+        <li>Pay via UPI or cash on pickup/delivery as arranged.</li>
+      </ol>
+    </section>
+
+    <!-- ABOUT (kept near end) -->
+    <section class="card">
+      <h2>About The Mom's Cake</h2>
+      <p style="margin-top:8px;color:var(--muted)">A home-style vegan bakery crafting cakes that taste like the real deal. Founded by local bakers who believe plant-based should never mean compromise — every recipe is tested and tweaked until it hits perfect texture and flavor.</p>
     </section>
 
     <!-- CONTACT -->
     <section class="card">
-      <h2 style="margin:0 0 8px;font-weight:800">Contact & location</h2>
+      <h2>Contact & location</h2>
 
       <div class="contact-media" aria-hidden="true">
         <img src="https://i.ibb.co/zWV4NtPr/Screenshot-20251124-195927-Maps.jpg" alt="Shop front">
       </div>
 
-      <div class="contact-cta" style="margin-top:10px">
-        <div style="text-align:center">
-          <div style="font-weight:800">WhatsApp</div>
-          <div style="color:var(--muted);font-size:13px;margin-top:6px">+91 72774 28490</div>
-        </div>
-        <a class="btn" href="https://wa.me/917277428490?text=Hi%20I%20want%20to%20order" target="_blank">Message</a>
+      <div style="margin-top:10px;text-align:center">
+        <div style="font-weight:800">WhatsApp</div>
+        <div style="color:var(--muted);margin-top:6px">+91 72774 28490</div>
+        <a class="btn-primary" style="margin-top:10px;display:inline-block;width:100%;max-width:320px" href="https://wa.me/917277428490?text=Hi%20I%20want%20to%20order" target="_blank">Message</a>
       </div>
     </section>
 
@@ -189,10 +339,37 @@
       © The Mom's Cake • Vegan cakes & custom designs
     </footer>
 
-  </div>
+  </main>
 
-  <div class="wh-float">
-    <a href="https://wa.me/917277428490" target="_blank" aria-label="WhatsApp">WhatsApp ▸</a>
-  </div>
+  <!-- WhatsApp FAB (reference style) -->
+  <a class="wa-fab" href="https://wa.me/917277428490?text=Hi%20The%20Mom%27s%20Cake" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+      <path d="M16 3.5A12.5 12.5 0 0 0 4.23 22.03L3 29l7.12-1.86A12.5 12.5 0 1 0 16 3.5Z"></path>
+    </svg>
+  </a>
+
+  <script>
+    // Year in footer (if you want dynamic year)
+    (function(){
+      try {
+        // mobile hamburger logic (like your reference)
+        const ham = document.getElementById('hamburger');
+        const menu = document.getElementById('mobileNav');
+        if(ham && menu){
+          function closeMenu(){ ham.classList.remove('open'); menu.classList.remove('active'); menu.setAttribute('aria-hidden','true'); }
+          ham.addEventListener('click', (e)=>{
+            e.stopPropagation();
+            ham.classList.toggle('open');
+            menu.classList.toggle('active');
+            menu.setAttribute('aria-hidden', menu.classList.contains('active') ? 'false' : 'true');
+          });
+          document.addEventListener('click', (e)=>{
+            if(!e.target.closest('nav')) closeMenu();
+          });
+        }
+      } catch(e){ console.error(e) }
+    })();
+  </script>
+
 </body>
 </html>
